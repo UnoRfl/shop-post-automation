@@ -21,4 +21,4 @@ Open `index.html` in a modern browser. Drafts stay in that browser. GitHub Pages
 
 ## Deployment
 
-The GitHub Actions workflow in `.github/workflows/pages.yml` publishes the static preview to GitHub Pages after a push to `main`.
+GitHub Pages publishes the repository root from `main`. New commits to `main` update the public preview.
