@@ -60,7 +60,7 @@ function renderPosts() {
     text.append(title, subline);
     const status = document.createElement('span');
     status.className = 'queue-count';
-    status.textContent = post.publishAt ? 'Planned' : 'Draft';
+    status.textContent = post.publishAt ? 'Time set' : 'Draft';
     row.append(text, status);
     queue.append(row);
   }
@@ -79,7 +79,12 @@ document.querySelector('#manageChannels').addEventListener('click', () => docume
 document.querySelectorAll('.connect').forEach(button => button.addEventListener('click', () => {
   toast(`${button.dataset.platform} account connection is not enabled in this preview yet.`);
 }));
-document.querySelectorAll('.draft').forEach(button => button.addEventListener('click', openComposer));
+document.querySelectorAll('.draft').forEach(button => button.addEventListener('click', event => {
+  event.preventDefault();
+  channels.forEach(input => { input.checked = input.value === 'Carousell'; });
+  updateListingFields();
+  openComposer();
+}));
 
 function updateListingFields() {
   document.querySelector('#listingFields').hidden = !channels.some(input => input.value === 'Carousell' && input.checked);
@@ -126,3 +131,8 @@ form.addEventListener('submit', event => {
 
 document.querySelector('.today').textContent = new Intl.DateTimeFormat(undefined, {weekday:'short', month:'short', day:'numeric'}).format(new Date());
 renderPosts();
+composer.addEventListener('close', () => {
+  form.reset();
+  document.querySelector('.upload b').textContent = 'Add product photos';
+  updateListingFields();
+});

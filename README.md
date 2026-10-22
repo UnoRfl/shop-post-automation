@@ -4,7 +4,7 @@ An English-language workspace for planning product posts across social and marke
 
 ## Current preview
 
-The static preview runs in a browser. It can save caption and listing drafts to that browser's local storage, show selected channels and schedule times, and collect basic Carousell listing details. It does **not** publish posts, upload photos, connect accounts, or sync data between devices. Do not enter passwords, access tokens, or payment information here.
+The static preview runs in a browser. It can save caption and listing drafts to that browser's local storage, show selected channels and requested times, and collect basic Carousell listing details. It records a selected photo's filename only; it does **not** upload photos, publish posts, connect accounts, or sync data between devices. Do not enter passwords, access tokens, or payment information here.
 
 ## Channel plan
 
