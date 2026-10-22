@@ -45,8 +45,8 @@ function renderPosts() {
   const posts = loadPosts().sort((a,b) => (a.publishAt || '9999').localeCompare(b.publishAt || '9999'));
   const empty = document.querySelector('#emptyState');
   empty.hidden = posts.length > 0;
-  document.querySelector('#queueCount').textContent = `${posts.length} ${posts.length === 1 ? 'item' : 'items'}`;
-  document.querySelector('#queueSummary').textContent = posts.length ? `${posts.length} post ${posts.length === 1 ? 'is' : 'are'} in your planner.` : 'No posts in your planner.';
+  document.querySelector('#queueCount').textContent = `${posts.length} ${posts.length === 1 ? 'draft' : 'drafts'}`;
+  document.querySelector('#queueSummary').textContent = posts.length ? `${posts.length} ${posts.length === 1 ? 'draft is' : 'drafts are'} saved in this browser.` : 'No drafts saved in this browser.';
 
   for (const post of posts) {
     const row = document.createElement('article');
@@ -60,8 +60,20 @@ function renderPosts() {
     text.append(title, subline);
     const status = document.createElement('span');
     status.className = 'queue-count';
-    status.textContent = post.publishAt ? 'Time set' : 'Draft';
-    row.append(text, status);
+    status.textContent = post.publishAt ? 'Time noted' : 'Draft';
+    const remove = document.createElement('button');
+    remove.className = 'remove-draft';
+    remove.type = 'button';
+    remove.textContent = 'Remove';
+    remove.setAttribute('aria-label', `Remove draft: ${post.listing?.title || post.caption.slice(0, 48)}`);
+    remove.addEventListener('click', () => {
+      const remaining = loadPosts().filter(item => item.id !== post.id);
+      if (savePosts(remaining)) {
+        renderPosts();
+        toast('Draft removed from this browser.');
+      }
+    });
+    row.append(text, status, remove);
     queue.append(row);
   }
 }
@@ -123,7 +135,7 @@ form.addEventListener('submit', event => {
   if (!savePosts(posts)) return;
   renderPosts();
   composer.close();
-  toast('Saved in this browser. This preview did not publish anything.');
+  toast('Draft saved in this browser. Nothing was published.');
   form.reset();
   document.querySelector('.upload b').textContent = 'Add product photos';
   updateListingFields();

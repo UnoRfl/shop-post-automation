@@ -3,53 +3,54 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f6f3">
+  <meta name="theme-color" content="#eef2ef">
   <title>ShopPost — Social publishing</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <aside class="sidebar">
-    <a class="brand" href="#"><span class="brand-mark">S</span><span>ShopPost<small>SELLER WORKSPACE</small></span></a>
+    <a class="brand" href="#dashboard"><span class="brand-mark">S</span><span>ShopPost<small>Seller workspace</small></span></a>
     <div class="workspace"><span class="avatar">S</span><span>My shop<small>Free workspace</small></span><span class="chevron">⌄</span></div>
     <nav aria-label="Main navigation">
       <a class="nav active" href="#dashboard"><span>▦</span> Overview</a>
       <a class="nav" href="#compose" id="navCompose"><span>＋</span> Create post</a>
-      <a class="nav" href="#queue"><span>▤</span> Content calendar</a>
-      <a class="nav" href="#queue"><span>◷</span> Scheduled queue</a>
+      <a class="nav" href="#queue"><span>▤</span> Draft planner</a>
       <p class="nav-label">CHANNELS</p>
       <a class="nav channel" href="#facebook"><i class="dot facebook"></i> Facebook Page <span class="badge">Setup</span></a>
       <a class="nav channel" href="#instagram"><i class="dot instagram"></i> Instagram <span class="badge">Setup</span></a>
       <a class="nav channel" href="#carousell"><i class="dot carousell"></i> Carousell <span class="badge muted">Drafts</span></a>
-      <a class="nav channel" href="#more"><i class="dot more"></i> Add a channel</a>
+      <a class="nav channel" href="#channels"><i class="dot more"></i> Channel settings</a>
     </nav>
-    <div class="sidebar-bottom"><a class="nav" href="#settings"><span>⚙</span> Settings</a><div class="profile"><span class="avatar profile-avatar">JD</span><span>Shop owner<small>Local preview</small></span><span class="chevron">···</span></div></div>
+    <div class="sidebar-bottom"><div class="profile"><span class="avatar profile-avatar">JD</span><span>Shop owner<small>Local preview</small></span><span class="chevron">···</span></div></div>
   </aside>
 
   <main id="dashboard">
-    <header class="topbar"><div class="crumb">My shop <span>/</span> Overview</div><div class="top-actions"><span class="today">Today, Oct 23</span><button class="help" aria-label="Help">?</button><button class="user-chip">JD</button></div></header>
+    <header class="topbar"><div class="crumb">My shop <span>/</span> Overview</div><div class="top-actions"><span class="today">Today, Oct 23</span><button class="help" aria-label="Help">?</button><button class="user-chip" aria-label="Shop owner">JD</button></div></header>
+    <div class="sheet">
     <section class="page-head"><div><p class="eyebrow">MY SHOP</p><h1>Publishing workspace</h1><p class="subhead">Prepare a post once, then shape it for each shop channel.</p></div><button class="primary" id="newPost">＋ Create a post</button></section>
-    <section class="notice" aria-label="Preview notice"><span class="notice-icon">i</span><div><strong>Preview workspace</strong><p>Publishing turns on after a platform is connected. Carousell listings stay as drafts for you to review and post.</p></div><button class="text-button" id="dismissNotice" aria-label="Dismiss">×</button></section>
+    <section class="notice" aria-label="Preview notice"><span class="notice-icon">i</span><div><strong>Preview workspace</strong><p>Save drafts and note a preferred time here. Live publishing needs a secure account connection; Carousell listings stay drafts for manual review.</p></div><button class="text-button" id="dismissNotice" aria-label="Dismiss">×</button></section>
 
-    <section class="section-heading"><div><h2>Channels</h2><p>Connect the accounts you use to sell.</p></div><button class="secondary" id="manageChannels">Channel settings <span>→</span></button></section>
+    <section class="section-heading"><div><h2>Channels</h2><p>Connect the accounts you use to sell.</p></div><button class="secondary" id="manageChannels">Manage <span>→</span></button></section>
     <section class="channel-list" id="channels">
-      <article class="channel-row"><span class="platform-wordmark fb">f</span><div class="channel-copy"><h3>Facebook Page</h3><p>Publish posts to a Page you manage.</p></div><span class="status"><i></i> Not connected</span><button class="outline connect" data-platform="Facebook Page">Connect</button></article>
-      <article class="channel-row"><span class="platform-wordmark ig">◎</span><div class="channel-copy"><h3>Instagram</h3><p>Publish photos and videos to a professional account.</p></div><span class="status"><i></i> Not connected</span><button class="outline connect" data-platform="Instagram">Connect</button></article>
-      <article class="channel-row"><span class="platform-wordmark ca">C</span><div class="channel-copy"><h3>Carousell</h3><p>Draft listing text and photos here; review and post on Carousell.</p></div><span class="status draft-status"><i></i> Drafts</span><button class="outline draft" data-platform="Carousell">New listing</button></article>
+      <article class="channel-row" id="facebook"><span class="platform-wordmark fb">f</span><div class="channel-copy"><h3>Facebook Page</h3><p>Publish posts to a Page you manage.</p></div><span class="status"><i></i> Not connected</span><button class="outline connect" data-platform="Facebook Page">Connect</button></article>
+      <article class="channel-row" id="instagram"><span class="platform-wordmark ig">◎</span><div class="channel-copy"><h3>Instagram</h3><p>Publish photos and videos to a professional account.</p></div><span class="status"><i></i> Not connected</span><button class="outline connect" data-platform="Instagram">Connect</button></article>
+      <article class="channel-row" id="carousell"><span class="platform-wordmark ca">C</span><div class="channel-copy"><h3>Carousell</h3><p>Draft listing text and photos here; review and post on Carousell.</p></div><span class="status draft-status"><i></i> Drafts</span><button class="outline draft" data-platform="Carousell">New listing</button></article>
     </section>
 
-    <section class="section-heading lower"><div><h2>Post planner</h2><p>Upcoming posts and listing drafts appear here.</p></div><div class="date-filter">Next 7 days <span>⌄</span></div></section>
+    <section class="section-heading lower"><div><h2>Draft planner</h2><p>Drafts and preferred times saved in this browser.</p></div><div class="date-filter">Local drafts</div></section>
     <section class="planner" id="queue">
-      <div class="planner-title"><div><strong>Upcoming</strong><small id="queueSummary">No posts in your planner.</small></div><span class="queue-count" id="queueCount">0 items</span></div>
-      <div class="empty" id="emptyState"><strong>Your planner is clear</strong><p>Add a post draft or choose a time to publish after you connect an account.</p><button class="primary small" id="emptyCreate">Create a post</button></div>
+      <div class="planner-title"><div><strong>Saved drafts</strong><small id="queueSummary">No drafts saved in this browser.</small></div><span class="queue-count" id="queueCount">0 drafts</span></div>
+      <div class="empty" id="emptyState"><strong>Your planner is clear</strong><p>Add a post draft or note when you would like to publish it.</p><button class="primary small" id="emptyCreate">Create a post</button></div>
     </section>
     <footer>ShopPost preview <span>·</span> Account credentials are never requested in this demo.</footer>
+    </div>
   </main>
 
-  <dialog id="composer">
+  <dialog id="composer" aria-labelledby="composerTitle">
     <form method="dialog" id="postForm">
-      <div class="modal-head"><div><p class="eyebrow">CONTENT PLANNER</p><h2>Create a post</h2></div><button class="close" value="cancel" aria-label="Close">×</button></div>
+      <div class="modal-head"><div><p class="eyebrow">Content planner</p><h2 id="composerTitle">Create a post</h2></div><button class="close" value="cancel" aria-label="Close">×</button></div>
       <label for="caption">Post text</label><textarea id="caption" rows="4" placeholder="Write a caption for your shop…"></textarea>
-      <div class="field-row"><label class="upload" for="photo"><span>＋</span><span><b>Add product photos</b><small>Choose an image from your device</small></span><input id="photo" type="file" accept="image/*"></label><div class="schedule-field"><label for="publishAt">Publish time (optional)</label><input id="publishAt" type="datetime-local"></div></div>
+      <div class="field-row"><label class="upload" for="photo"><span>＋</span><span><b>Add product photos</b><small>Preview only; file is not uploaded</small></span><input id="photo" type="file" accept="image/*"></label><div class="schedule-field"><label for="publishAt">Preferred time (note only)</label><input id="publishAt" type="datetime-local"></div></div>
       <fieldset><legend>Choose channels</legend><label class="check"><input type="checkbox" name="channel" value="Facebook Page" checked> Facebook Page</label><label class="check"><input type="checkbox" name="channel" value="Instagram" checked> Instagram</label><label class="check"><input type="checkbox" name="channel" value="Carousell"> Carousell listing draft</label></fieldset>
       <section class="listing-fields" id="listingFields" hidden>
         <h3>Carousell listing details</h3>

@@ -3,5 +3,6 @@
 !.env.example
 node_modules/
 dist/
+.taste-skill/
 .DS_Store
 Thumbs.db
